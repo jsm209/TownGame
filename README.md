@@ -18,6 +18,7 @@ reaches zero.
  - Red People: The population of additional people who are homeless, criminals, or otherwise lawless
  - Houses: The homes in the town. Each home can house 4 people.
  - Workplace: The places to work in the town. Each workplace can employ up to 10 people.
+ - Control: The strength to inspire and enforce order over a population. The game is lost if this reaches 0.
 
 ## Mechanics
 At the end of a turn, the town will do some amount of work before the prompted event. Mainly this is a function
