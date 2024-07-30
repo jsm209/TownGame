@@ -1,8 +1,9 @@
 # Town Game
 
 ## Objective
-Reach the status of a country (40,000) without succumbing to societal imbalances and random events.
+Reach the status of a country \*(40,000) without succumbing to societal imbalances and random events.
 
+*\* refer to appendize for population justification*
 
 ## Game design loop
 The player can use their money to purchase resources. After the player is done spending however much money
@@ -32,13 +33,13 @@ will die from assumed old age or natural causes. Otherwise, depending on if they
 of the town, they will do some amount of work.
 
 ### Reproduction vs. Working
-Each person by default will have a 6% chance to have a baby (simulating the fact that 2 people are needed to
-make a baby). This is reduced to 3% if the person has to work. A person will opt to work by default if there 
+Each person by default will have a \*6% chance to have a baby (simulating the fact that 2 people are needed to
+make a baby). This is reduced to \*3% if the person has to work. A person will opt to work by default if there 
 is space for them to work. People who work will generate money for the player to use next turn. People who 
 do not work will do nothing.
 
 
-*(refer to the appendix for the reasoning for this probability calculation)*
+*\* refer to the appendix for the reasoning for this probability calculation*
 
 
 ### Red People
@@ -92,6 +93,17 @@ also need to vary between being good, bad, both, or neutral/having no effect.
 # APPENDIX
 
 This is a section dedicated to keeping notes about how certain ideas or numbers were derived for future reference.
+
+## Justification for target of 40k Population
+
+This figure is just based around some of the smallest populations for countries in real life:
+   
+- Vatican City: Approximately 800 people.
+- San Marino: About 35,000 people.
+- Liechtenstein: Around 40,000 people.
+- Andorra: Approximately 80,000 people.
+- Monaco: Around 40,000 people.
+
 
 ## Population Growth
 
