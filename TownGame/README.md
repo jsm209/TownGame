@@ -31,10 +31,14 @@ will die from assumed old age or natural causes. Otherwise, depending on if they
 of the town, they will do some amount of work.
 
 ### Reproduction vs. Working
-Each person by default will have a 50% chance to have a baby (simulating the fact that 2 people are needed to
-make a baby). This is reduced to 25% if the person has to work. A person will opt to work by default if there 
+Each person by default will have a 6% chance to have a baby (simulating the fact that 2 people are needed to
+make a baby). This is reduced to 3% if the person has to work. A person will opt to work by default if there 
 is space for them to work. People who work will generate money for the player to use next turn. People who 
 do not work will do nothing.
+
+
+*(refer to the appendix for the reasoning for this probability calculation)*
+
 
 ### Red People
 Red people will sap the town's control by some amount each turn if above a threshold of 5% of the normal people
@@ -83,3 +87,89 @@ that will test the player's resources, either doing an actual check and determin
 an outcome, or always having a predetermined outcome. These events need to scale based on the day. The events
 also need to vary between being good, bad, both, or neutral/having no effect.
 
+
+# APPENDIX
+
+This is a section dedicated to keeping notes about how certain ideas or numbers were derived for future reference.
+
+## Population Growth
+
+To model a more realistic population growth where each couple has 2-3 children on average over their lifetime, 
+I need to adjust the annual probability of childbirth.
+
+Let's assume the following: Couples have children within a certain age range, typically from age 20 to 40, giving a 20-year 
+span for childbirth. I want to aim for an average of 2.5 children per couple.
+
+Here’s how I calculated the annual probability pp:
+
+    Determine the total number of years in which a couple can have children:
+    Total years=20
+    Total years=20
+
+    Set the average number of children per couple:
+    Average children=2.5
+    Average children=2.5
+
+    Calculate the annual probability of childbirth for a couple:
+
+    To find the probability pp that results in an average of 2.5 children over 20 years, we can use the formula for the expected number of births in a binomial distribution:
+    Expected number of births=Number of years×p=2.5
+    Expected number of births=Number of years×p=2.5
+
+    Solving for pp:
+    p=2.520=0.125
+    p=202.5​=0.125
+
+Thus, each couple should have a 12.5% chance of having a child each year to achieve an average of 2.5 children per couple over 
+a 20-year period. This is a more realistic probability for modeling a stable population growth rate. However because this game
+does not yet model populations based on simulating individual people, rather just broad assumptions of the population as a whole,
+I need to find a better probability that assumes the following to avoid a runaway population:
+
+- Each person can have children indefinitely outside of any age requirements
+- Each person doesn't explicitly die of old age (but rather other causes during the game), earlier I actually assumed arbitrarily
+ that everyone by default will have a 1% of dying in a given year.
+ 
+ We can use a Poisson distribution to model the number of children each person has over their lifetime, where the average 
+ number of events (having children) is a product of the rate (probability) and time.
+ 
+ For a Poisson distribution with average λλ, where λλ is the average number of children desired, the probability pp 
+ per year can be approximated if we want an average of 2.5 children:
+
+    Given that the Poisson distribution has a mean λλ, set:
+    λ=2.5
+    λ=2.5
+
+    If tt is the number of years (which is indefinite), we treat pp as a very small annual rate such that λ=p×tλ=p×t.
+
+    Given an indefinite period, we need a small pp that, over a practical average human reproductive span 
+    (say 20 years, even though the period is indefinite, we use a realistic span for the sake of this calculation):
+
+    Set the average reproductive span:
+    Reproductive span=20 years
+    Reproductive span=20 years
+
+    To keep the calculation realistic over the span, we can use:
+    p×20=2.5
+    p×20=2.5
+
+    Solving for pp:
+    p=2.520=0.125
+    p=202.5​=0.125
+
+However, if we assume an indefinite lifespan and the possibility of continual childbearing each year, we reduce pp further:
+
+    To make the probability very small considering indefinite childbearing:
+    Adjusting for Indefinite Lifespan:
+
+    Considering an extended span:
+    If we double the span to 40 years for the sake of having a conservative estimate:
+    p=2.540=0.0625
+    p=402.5​=0.0625
+
+    Therefore, a reasonable annual probability pp for an individual who can have children indefinitely would be approximately:
+    p≈0.06 or 6%
+
+Using a 6% annual probability of having a child for each person would be a reasonable estimate to model a population 
+where individuals could potentially have children indefinitely and still achieve an average of 2-3 children over their 
+lifetime. This helps mitigate the issue of overly rapid population growth. And then to simplify the calculation we can assume
+that people are half as likely to have children if they had to work in a given year, so 3%.

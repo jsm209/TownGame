@@ -9,11 +9,11 @@ import Foundation
 
 struct ResourceSnapshotModel {
     
-    var money: Int
-    var control: Int
-    var people: Int
-    var redPeople: Int
-    var houses: Int
-    var workplaces: Int
+    var money: Int = 100
+    var control: Int = 100
+    var people: Int = 10
+    var redPeople: Int = 0
+    var houses: Int = 4
+    var workplaces: Int = 0
     
 }
